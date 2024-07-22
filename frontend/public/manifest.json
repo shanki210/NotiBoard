@@ -6,13 +6,9 @@
     "permissions": ["activeTab"],
     "chrome_url_overrides": {
       "newtab": "index.html"
-    },
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "icons": {
-      "48": "icon.png",
-      "128": "icon128.png"
     }
   }
+
+
+  
   

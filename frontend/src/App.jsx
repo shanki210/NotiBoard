@@ -1,6 +1,6 @@
 import React from 'react';
-import GoogleSlidesWidget from '.components/GoogleSlidesWidget';
-import PomodoroTimerWidget from '.components/PomodoroTimerWidget';
+import GoogleSlidesWidget from './components/GoogleSlidesWidget';
+import PomodoroTimerWidget from './components/PomodoroTimerWidget';
 import './App.css';
 
 function App() {
