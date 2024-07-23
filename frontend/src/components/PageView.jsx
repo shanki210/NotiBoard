@@ -8,6 +8,7 @@ import Spotify from "./Spotify";
 import GoogleMeetWidget from "./GoogleMeetWidget";
 import PollWidget from "./PollWidget";
 import GoogleFormWidget from "./GoogleFormWidget";
+import ChatBot from "./ChatBot";
 
 export default function PageView() {
   return (
@@ -44,6 +45,7 @@ export default function PageView() {
               THE GREAT Hrishit Pandey.
             </p>
           </div>
+          <ChatBot/>
         </div>
       </div>
     </div>

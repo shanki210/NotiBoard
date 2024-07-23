@@ -36,4 +36,29 @@ button {
   font-size: 1em;
   cursor: pointer;
 }
+.chatbot-container {
+  width: 300px;
+  max-width: 100%;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.message.user .message-text {
+  text-align: right;
+  color: #1a73e8;
+}
+
+.message.bot .message-text {
+  text-align: left;
+  color: #000;
+}
+
+.message-text {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background-color: #f1f1f1;
+}
 
