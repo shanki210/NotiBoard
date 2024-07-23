@@ -31,7 +31,7 @@ const ChatBot = () => {
         },
         {
           headers: {
-            'Authorization': `Bearer sk-proj-r3sYkzISQvdvTlpqi7mNT3BlbkFJEUsE79mapt9cMi9SMlcm`,
+            'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
             'Content-Type': 'application/json',
           },
         }
