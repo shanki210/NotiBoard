@@ -7,6 +7,9 @@ exports.dbSecretFields = ["__v", "password"];
 exports.LOCALHOST_CLIENT_URL = process.env.LOCALHOST_CLIENT_URL;
 exports.LOCALHOST_SERVER_URL = process.env.LOCALHOST_SERVER_URL;
 
+exports.spotify_client_id = process.env.SPOTIFY_CLIENT_ID;
+exports.spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+
 exports.SESSIONS_SECRET = process.env.SESSIONS_SECRET;
 
 exports.BASE_CLIENT_URL = exports.LOCALHOST_CLIENT_URL;
