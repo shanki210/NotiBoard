@@ -7,6 +7,7 @@ import GoogleSlidesWidget from "./GoogleSlidesWidget";
 import Spotify from "./Spotify";
 import GoogleMeetWidget from "./GoogleMeetWidget";
 import PollWidget from "./PollWidget";
+import GoogleFormWidget from "./GoogleFormWidget";
 
 export default function PageView() {
   return (
@@ -29,6 +30,7 @@ export default function PageView() {
           <div className="grid grid-cols-2 gap-6">
             <Spotify />
             <GoogleMeetWidget />
+            <GoogleFormWidget/>
           </div>
         </div>
         <div className="bg-card rounded-lg p-6 flex flex-col dark:bg-[#2a2a2a] dark:text-card-foreground">
