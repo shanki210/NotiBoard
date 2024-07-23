@@ -17,5 +17,8 @@
     "nodemon": "^3.1.4",
     "path": "^0.12.7",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^3.0.0"
   }
 }
