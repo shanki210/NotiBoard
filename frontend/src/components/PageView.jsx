@@ -11,9 +11,23 @@ import GoogleFormWidget from "./GoogleFormWidget";
 import ChatBot from "./ChatBot";
 import GoogleCalenderWidget from "./GoogleCalenderWidget";
 import "../App.css";
+import { useRef, useState } from "react";
 
 
 export default function PageView({ darkMode, toggleDarkMode }) {
+
+  const [shooting, setShooting] = useState(false);
+  const headingRef = useRef(null);
+  const iconRef = useRef(null);
+
+  const handleDarkModeToggle = () => {
+    setShooting(true);
+    setTimeout(() => {
+      toggleDarkMode();
+      setShooting(false);
+    }, 500);
+  };
+
   return (
     <div className={` min-h-screen min-w-screen ${
         darkMode ? "bg-dark-mode" : "bg-light-mode"
@@ -25,16 +39,27 @@ export default function PageView({ darkMode, toggleDarkMode }) {
       <header className="px-6 py-4 flex justify-between items-center">
         <div>
         <h1
-              className={`text-4xl font-bold text-card-foreground ${
+              ref={headingRef}
+              className={`text-2xl font-bold text-card-foreground ${
                 darkMode ? "text-white" : "text-sky-500"
               } candy-text transition-colors duration-500`}
             >
               NotiBoard
             </h1>
         </div>
-        <div onClick={toggleDarkMode} className="cursor-pointer">
-          {darkMode ? <SunIcon /> : <MoonIcon />}
-        </div>
+        <div ref={iconRef} onClick={handleDarkModeToggle} className="cursor-pointer">
+              {darkMode ? <SunIcon /> : <MoonIcon />}
+            </div>
+            {shooting && (
+            <div
+              className="shooting-light"
+              style={{
+                top: headingRef.current?.offsetTop,
+                left: headingRef.current?.offsetLeft,
+                width: iconRef.current?.offsetLeft - headingRef.current?.offsetLeft,
+              }}
+            ></div>
+          )}
       </header>
       <div
         className={`flex-1 grid grid-cols-[45%_55%] gap-8 p-6 ${
