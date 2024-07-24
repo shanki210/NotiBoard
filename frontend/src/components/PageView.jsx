@@ -24,11 +24,13 @@ export default function PageView({ darkMode, toggleDarkMode }) {
     >
       <header className="px-6 py-4 flex justify-between items-center">
         <div>
-          <h1 className= {`text-2xl font-bold text-card-foreground ${
-              darkMode ? "text-white" : "text-black"
-            } transition-colors duration-500`}>
-            NotiBoard
-          </h1>
+        <h1
+              className={`text-4xl font-bold text-card-foreground ${
+                darkMode ? "text-white" : "text-sky-500"
+              } candy-text transition-colors duration-500`}
+            >
+              NotiBoard
+            </h1>
         </div>
         <div onClick={toggleDarkMode} className="cursor-pointer">
           {darkMode ? <SunIcon /> : <MoonIcon />}

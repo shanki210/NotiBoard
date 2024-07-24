@@ -76,4 +76,52 @@ button {
   color: #ffffff;
 }
 
+.candy-text {
+  color: #ff6b6b;
+  text-shadow: 
+    0 1px 0 #ff85a2,
+    0 2px 0 #ff8ab0,
+    0 3px 0 #ff8fbd,
+    0 4px 0 #ff94cb,
+    0 5px 0 #ff99d8,
+    0 6px 0 #ff9ee6,
+    0 7px 0 #ffa3f3,
+    0 8px 0 #ffa8ff,
+    0 9px 0 #ffadff,
+    0 10px 10px rgba(0, 0, 0, 0.15);
+  transform: perspective(500px) rotateX(20deg);
+  animation: candy-anim 3s infinite;
+}
+
+@keyframes candy-anim {
+  0%, 100% {
+    transform: perspective(500px) rotateX(20deg) translateY(0);
+    text-shadow: 
+      0 1px 0 #ff85a2,
+      0 2px 0 #ff8ab0,
+      0 3px 0 #ff8fbd,
+      0 4px 0 #ff94cb,
+      0 5px 0 #ff99d8,
+      0 6px 0 #ff9ee6,
+      0 7px 0 #ffa3f3,
+      0 8px 0 #ffa8ff,
+      0 9px 0 #ffadff,
+      0 10px 10px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    transform: perspective(500px) rotateX(20deg) translateY(-10px);
+    text-shadow: 
+      0 1px 0 #ff85a2,
+      0 2px 0 #ff8ab0,
+      0 3px 0 #ff8fbd,
+      0 4px 0 #ff94cb,
+      0 5px 0 #ff99d8,
+      0 6px 0 #ff9ee6,
+      0 7px 0 #ffa3f3,
+      0 8px 0 #ffa8ff,
+      0 9px 0 #ffadff,
+      0 10px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
 
