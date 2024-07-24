@@ -148,9 +148,7 @@ export default function Component() {
         <div className="text-5xl font-bold text-white">
           {time.toLocaleTimeString()}
         </div>
-        <div className="text-muted-foreground text-white">
-          {time.toLocaleDateString()}
-        </div>
+        <div className="text-white">{time.toLocaleDateString()}</div>
       </div>
     </div>
   );

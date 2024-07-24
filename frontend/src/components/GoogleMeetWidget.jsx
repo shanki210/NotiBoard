@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Card } from "./ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -8,23 +9,20 @@ const GoogleMeetWidget = () => {
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   // Fetch the user's schedule from an API or service
-  //   const fetchSchedule = async () => {
-  //     try {
-  //       // Replace this with actual API call
-  //       const response = await fetch("/api/schedule");
-  //       const data = await response.json();
-  //       setSchedule(data);
-  //     } catch (error) {
-  //       console.error("Failed to fetch schedule", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchSchedule = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/api/schedule");
+        setSchedule(response.data);
+      } catch (error) {
+        console.error("Failed to fetch schedule", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  //   fetchSchedule();
-  // }, []);
+    fetchSchedule();
+  }, []);
 
   const handleJoinMeeting = () => {
     if (meetUrl) {
@@ -33,8 +31,7 @@ const GoogleMeetWidget = () => {
   };
 
   const handleCreateMeeting = () => {
-    // Logic to create a new meeting, e.g., open a modal or redirect to a scheduling page
-    window.open("https://calendar.google.com/", "_blank"); // Placeholder URL
+    window.open("https://calendar.google.com/", "_blank");
   };
 
   return (
