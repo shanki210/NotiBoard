@@ -8,23 +8,23 @@ const GoogleMeetWidget = () => {
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Fetch the user's schedule from an API or service
-    const fetchSchedule = async () => {
-      try {
-        // Replace this with actual API call
-        const response = await fetch("/api/schedule");
-        const data = await response.json();
-        setSchedule(data);
-      } catch (error) {
-        console.error("Failed to fetch schedule", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   // Fetch the user's schedule from an API or service
+  //   const fetchSchedule = async () => {
+  //     try {
+  //       // Replace this with actual API call
+  //       const response = await fetch("/api/schedule");
+  //       const data = await response.json();
+  //       setSchedule(data);
+  //     } catch (error) {
+  //       console.error("Failed to fetch schedule", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchSchedule();
-  }, []);
+  //   fetchSchedule();
+  // }, []);
 
   const handleJoinMeeting = () => {
     if (meetUrl) {

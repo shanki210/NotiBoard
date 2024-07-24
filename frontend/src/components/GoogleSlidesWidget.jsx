@@ -34,7 +34,7 @@ function GoogleSlidesWidget() {
         <div className="text-2xl font-bold">Google Slides</div>
         <div className="text-muted-foreground">View the presentation</div>
       </div> */}
-      </>
+    </>
   );
 }
 
