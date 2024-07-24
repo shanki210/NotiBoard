@@ -20,7 +20,18 @@ const Spotify = () => {
   }, []);
   return (
     <>
-      <Card className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground">
+      <Card
+        className="bg-card rounded-lg p-3 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground"
+        style={{
+          backgroundImage:
+            "url('https://img.freepik.com/free-photo/artistic-blurry-colorful-wallpaper-background_58702-10305.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1721433600&semt=ais_user')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          minHeight: "300px",
+          maxHeight: "300px",
+        }}
+      >
         <div className="w-full flex justify-between items-center mb-4">
           <div className="relative w-full">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -36,7 +47,7 @@ const Spotify = () => {
             <PauseIcon className="w-6 h-6" />
           </Button>
         </div>
-        <div className="w-full flex justify-between items-center mb-4 w-5">
+        <div className="w-full flex justify-between items-center">
           <div className="relative w-full">
             <div>
               {token === "" ? (

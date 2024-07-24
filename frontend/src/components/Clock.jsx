@@ -116,7 +116,7 @@ export default function Component() {
 
   return (
     <div
-      className={`bg-cover bg-center rounded-lg shadow-lg p-6 flex items-center justify-between ${
+      className={`bg-cover bg-center rounded-lg shadow-lg p-6 flex items-center justify-between hover:scale-105 transition-shadow duration-50 ${
         theme === "dark" ? "dark" : ""
       }`}
       style={{

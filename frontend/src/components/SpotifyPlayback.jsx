@@ -136,34 +136,43 @@ function SpotifyPlayback(props) {
   } else {
     return (
       <div className="container">
-        <div className="main-wrapper">
+        <div className="main-wrapper border p-2 rounded">
           <img
             src={currentTrack.album.images[0].url}
             className="now-playing__cover"
             alt=""
-            style={{ width: "75rem" }}
           />
 
-          <div className="now-playing__side ">
+          <div className="now-playing__side " style={{ color: "white" }}>
             <div className="now-playing__name">{currentTrack.name}</div>
             <div className="now-playing__artist">
               {currentTrack.artists[0].name}
             </div>
-            <div className="d-flex justify-content-between align-items-center border p-2">
+            <div className="d-flex justify-content-between align-items-center ">
               <button className="btn-spotify " onClick={handlePreviousTrack}>
-                <MdSkipPrevious style={{ width: "1.5rem", height: "1.5rem" }} />
+                <MdSkipPrevious
+                  style={{ width: "1.5rem", height: "1.5rem", color: "white" }}
+                />
               </button>
 
               <button className="btn-spotify" onClick={handlePlayPause}>
                 {isPaused ? (
                   <IoMdPlay style={{ width: "1.5rem", height: "1.5rem" }} />
                 ) : (
-                  <FaPause style={{ width: "1.5rem", height: "1.5rem" }} />
+                  <FaPause
+                    style={{
+                      width: "1.5rem",
+                      height: "1.5rem",
+                      color: "white",
+                    }}
+                  />
                 )}
               </button>
 
               <button className="btn-spotify" onClick={handleNextTrack}>
-                <MdSkipNext style={{ width: "1.5rem", height: "1.5rem" }} />
+                <MdSkipNext
+                  style={{ width: "1.5rem", height: "1.5rem", color: "white" }}
+                />
               </button>
             </div>
           </div>

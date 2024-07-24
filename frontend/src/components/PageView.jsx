@@ -9,6 +9,7 @@ import GoogleMeetWidget from "./GoogleMeetWidget";
 import PollWidget from "./PollWidget";
 import GoogleFormWidget from "./GoogleFormWidget";
 import ChatBot from "./ChatBot";
+import GoogleCalenderWidget from "./GoogleCalenderWidget";
 
 export default function PageView() {
   return (
@@ -19,39 +20,61 @@ export default function PageView() {
       <header className="bg-muted px-6 py-4 flex justify-between items-center">
         <div />
       </header>
-      <div className="flex-1 grid grid-cols-[35%_65%] gap-8 p-6 dark:bg-[#1a1a1a] dark:text-card-foreground">
+      <div className="flex-1 grid grid-cols-[45%_55%] gap-8 p-6 dark:bg-[#1a1a1a] dark:text-card-foreground">
         <div className="flex flex-col gap-6 relative">
-          <PomodoroTimerWidget />
-          {/* <GoogleSlidesWidget /> */}
-          {/*  <PollWidget
-            question={"What's your favorite lunch spot?"}
-            options={["Cafe Downtown", "Long Drive Hotel", "Office Mess"]}
-            onVote={[]}
-          />  */}
-          <div className="grid grid-cols-2 gap-6">
-            <Spotify />
+          <div className="hover:shadow-lg transition-shadow duration-300">
+            <PomodoroTimerWidget />
+          </div>
+
+          <div
+            className="hover:scale-105 transition-shadow duration-300"
+            style={{ minHeight: "250px", maxHeight: "250px" }}
+          >
             <ChatBot />
-            <Card className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground">
+          </div>
+          {/* <GoogleSlidesWidget /> */}
+
+          <div className="grid grid-cols-2 gap-6">
+            <div
+              className="hover:scale-105 transition-shadow duration-300 "
+              style={{ minHeight: "310px", maxHeight: "310px" }}
+            >
+              <Spotify />
+            </div>
+            <div
+              className="hover:scale-105 transition-shadow duration-300 "
+              style={{ minHeight: "310px", maxHeight: "310px" }}
+            >
+              <GoogleCalenderWidget />
+            </div>
+
+            <div className="hover:scale-105 transition-shadow duration-300">
               <GoogleMeetWidget />
-            </Card>
-            <Card className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground">
+            </div>
+            <div className="bg-card rounded-lg flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground hover:scale-105 transition-shadow duration-300">
               <GoogleFormWidget />
-            </Card>
+            </div>
             {/*  <GoogleMeetWidget />
           }  <GoogleFormWidget/>  */}
           </div>
         </div>
-        <div className="bg-card rounded-lg p-6 flex flex-col dark:bg-[#2a2a2a] dark:text-card-foreground">
-          <ClockWidget></ClockWidget>
-          <div className="flex-1 bg-[#ffffff] rounded-lg border border-input overflow-hidden">
+        <div className="bg-card rounded-lg p-6 dark:bg-[#2a2a2a] dark:text-card-foreground">
+          <ClockWidget />
+          <div className="flex-1 bg-[#ffffff] rounded-lg border border-input overflow-hidden hover:scale-105 transition-shadow duration-50">
             <iframe
               src="https://docs.google.com/presentation/d/1Wb3sqd0u9KVXu1GsBOp6bKTq1g3jdrCTqZMeMWqJAwU/embed?start=true&loop=true&delayms=2000"
               frameBorder="0"
               width="100%"
-              height="50%"
+              height="100%"
               allowFullScreen
+              style={{ minHeight: "400px", marginBottom: "1rem" }}
             />
           </div>
+          <PollWidget
+            question={"What's your favorite lunch spot?"}
+            options={["Cafe Downtown", "Long Drive Hotel", "Office Mess"]}
+            onVote={[]}
+          />
         </div>
       </div>
     </div>

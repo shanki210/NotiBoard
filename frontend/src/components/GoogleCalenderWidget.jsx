@@ -4,7 +4,7 @@ import { Card } from "./ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-const GoogleMeetWidget = () => {
+const GoogleCalenderWidget = () => {
   const [meetUrl, setMeetUrl] = useState("");
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,40 +35,41 @@ const GoogleMeetWidget = () => {
   };
 
   return (
-    <Card className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground">
-      <div className="w-full flex justify-between items-center mb-4">
-        <div className="relative w-full">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <VideoIcon className="w-5 h-5 text-muted-foreground" />
-          </div>
-          <Input
-            type="text"
-            placeholder="Enter Google Meet URL..."
-            value={meetUrl}
-            onChange={(e) => setMeetUrl(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-md bg-muted text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-          />
-        </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="text-primary"
-          onClick={handleJoinMeeting}
-        >
-          <VideoIcon className="w-6 h-6" />
-        </Button>
-      </div>
-
-      <div className="w-full flex justify-center mb-4">
-        <Button onClick={handleCreateMeeting} className="text-primary">
-          <span style={{ color: "white" }}> Create Meet</span>
-        </Button>
+    <Card
+      className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground"
+      style={{
+        minHeight: "300px",
+        maxHeight: "300px",
+        backgroundImage:
+          "url('https://png.pngtree.com/thumb_back/fh260/background/20190221/ourmid/pngtree-school-season-back-to-school-notice-school-schedule-image_31902.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="w-full">
+        <div className="text-2xl font-bold mb-2">Your Schedule</div>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <ul>
+            {schedule.length > 0 ? (
+              schedule.map((event) => (
+                <li key={event.id} className="mb-2">
+                  {event.title} at {event.time}
+                </li>
+              ))
+            ) : (
+              <li>No upcoming events</li>
+            )}
+          </ul>
+        )}
       </div>
     </Card>
   );
 };
 
-export default GoogleMeetWidget;
+export default GoogleCalenderWidget;
 
 function VideoIcon(props) {
   return (

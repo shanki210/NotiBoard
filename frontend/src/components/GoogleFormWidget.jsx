@@ -9,15 +9,15 @@ const GoogleFormWidget = () => {
 
   return (
     <div
-      className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground cursor-pointer hover:bg-gray-800 transition-colors duration-300"
+      className="bg-card rounded-lg p-2 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground cursor-pointer hover:bg-gray-400 transition-colors duration-300"
       onClick={handleClick}
     >
       <img
         src="/form-preview.svg"
         alt="Google Form Preview"
         className="rounded-lg shadow-lg mb-4"
-        width={300}
-        height={200}
+        width={100}
+        height={50}
       />
       <h2 className="text-2xl font-bold mb-2">Feedback Form</h2>
       <p className="text-lg text-center text-muted-foreground">

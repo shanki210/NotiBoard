@@ -32,7 +32,7 @@ const ChatBot = () => {
         },
         {
           headers: {
-            Authorization: `Bearer sk-proj-xPi7ZMMrgSWon2XnZjM0T3BlbkFJkOYZImTzjPEnbabNkXTj`,
+            Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
             "Content-Type": "application/json",
           },
         }
@@ -53,26 +53,36 @@ const ChatBot = () => {
   };
 
   return (
-    <Card className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground">
-      <div>
+    <Card
+      className="bg-card rounded-lg flex flex-col items-center justify-between dark:bg-[#2a2a2a] dark:text-card-foreground h-full"
+      style={{
+        backgroundImage:
+          "url('https://static.vecteezy.com/system/resources/previews/021/835/780/original/artificial-intelligence-chatbot-assistance-background-free-vector.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="flex-1 w-full overflow-y-auto p-4">
         {chatHistory.map((entry, index) => (
           <div key={index} className={`message ${entry.sender}`}>
             <div className="message-text">{entry.text}</div>
           </div>
         ))}
       </div>
-      <div className="input-container flex">
+      <div className="input-container flex ">
         <input
           type="text"
           value={message}
           onChange={handleMessageChange}
           onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-          className="flex-1 p-2 border border-gray-300 rounded-l-lg"
+          className="flex-1 p-2 border border-black-300 rounded-lg "
           placeholder="Type a message..."
+          style={{ width: "60%", backgroundColor: "#F8F8F8" }}
         />
         <button
           onClick={handleSendMessage}
-          className="p-2 bg-blue-500 text-white rounded-r-lg"
+          className="p-2 bg-blue-500 text-white rounded-end"
         >
           Send
         </button>
