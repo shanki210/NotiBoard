@@ -1,39 +1,39 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Card } from './ui/card';
+import React, { useState } from "react";
+import axios from "axios";
+import { Card } from "./ui/card";
 
 const ChatBot = () => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
-  
+
   const handleMessageChange = (e) => setMessage(e.target.value);
-  
+
   const handleSendMessage = async () => {
     if (!message.trim()) return;
 
     // Add user message to chat history
-    setChatHistory([...chatHistory, { sender: 'user', text: message }]);
-    
+    setChatHistory([...chatHistory, { sender: "user", text: message }]);
+
     // Send message to OpenAI API
     try {
-        console.log(message)
+      console.log(message);
       const response = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
+        "https://api.openai.com/v1/chat/completions",
         {
-          model: 'gpt-3.5-turbo',
+          model: "gpt-3.5-turbo",
           messages: [
             ...chatHistory.map((entry) => ({
-              role: entry.sender === 'user' ? 'user' : 'assistant',
+              role: entry.sender === "user" ? "user" : "assistant",
               content: entry.text,
             })),
-            { role: 'user', content: message }
+            { role: "user", content: message },
           ],
           max_tokens: 150,
         },
         {
           headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-            'Content-Type': 'application/json',
+            Authorization: `Bearer sk-proj-xPi7ZMMrgSWon2XnZjM0T3BlbkFJkOYZImTzjPEnbabNkXTj`,
+            "Content-Type": "application/json",
           },
         }
       );
@@ -41,10 +41,14 @@ const ChatBot = () => {
       const reply = response.data.choices[0].message.content;
 
       // Add bot response to chat history
-      setChatHistory([...chatHistory, { sender: 'user', text: message }, { sender: 'bot', text: reply }]);
-      setMessage('');
+      setChatHistory([
+        ...chatHistory,
+        { sender: "user", text: message },
+        { sender: "bot", text: reply },
+      ]);
+      setMessage("");
     } catch (error) {
-      console.error('Error communicating with the chatbot:', error);
+      console.error("Error communicating with the chatbot:", error);
     }
   };
 
@@ -62,7 +66,7 @@ const ChatBot = () => {
           type="text"
           value={message}
           onChange={handleMessageChange}
-          onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+          onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
           className="flex-1 p-2 border border-gray-300 rounded-l-lg"
           placeholder="Type a message..."
         />

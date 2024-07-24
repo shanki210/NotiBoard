@@ -1,9 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
+import { MdSkipPrevious, MdSkipNext } from "react-icons/md";
+import { FaPause } from "react-icons/fa6";
+import { IoMdPlay } from "react-icons/io";
 
 const track = {
   name: "",
   album: {
-    images: [{ url: "" }],
+    images: [
+      {
+        url: "https://cdn.pixabay.com/photo/2016/10/22/00/15/spotify-1759471_640.jpg",
+      },
+    ],
   },
   artists: [{ name: "" }],
 };
@@ -134,25 +141,31 @@ function SpotifyPlayback(props) {
             src={currentTrack.album.images[0].url}
             className="now-playing__cover"
             alt=""
+            style={{ width: "75rem" }}
           />
 
-          <div className="now-playing__side">
+          <div className="now-playing__side ">
             <div className="now-playing__name">{currentTrack.name}</div>
             <div className="now-playing__artist">
               {currentTrack.artists[0].name}
             </div>
+            <div className="d-flex justify-content-between align-items-center border p-2">
+              <button className="btn-spotify " onClick={handlePreviousTrack}>
+                <MdSkipPrevious style={{ width: "1.5rem", height: "1.5rem" }} />
+              </button>
 
-            <button className="btn-spotify" onClick={handlePreviousTrack}>
-              &lt;&lt;
-            </button>
+              <button className="btn-spotify" onClick={handlePlayPause}>
+                {isPaused ? (
+                  <IoMdPlay style={{ width: "1.5rem", height: "1.5rem" }} />
+                ) : (
+                  <FaPause style={{ width: "1.5rem", height: "1.5rem" }} />
+                )}
+              </button>
 
-            <button className="btn-spotify" onClick={handlePlayPause}>
-              {isPaused ? "PLAY" : "PAUSE"}
-            </button>
-
-            <button className="btn-spotify" onClick={handleNextTrack}>
-              &gt;&gt;
-            </button>
+              <button className="btn-spotify" onClick={handleNextTrack}>
+                <MdSkipNext style={{ width: "1.5rem", height: "1.5rem" }} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
