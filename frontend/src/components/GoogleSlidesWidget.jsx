@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 function GoogleSlidesWidget() {
   return (
-    <Card className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground">
+    <>
       {/* <div className="w-full flex justify-between items-center mb-4">
         <div className="relative w-full">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -34,7 +34,7 @@ function GoogleSlidesWidget() {
         <div className="text-2xl font-bold">Google Slides</div>
         <div className="text-muted-foreground">View the presentation</div>
       </div> */}
-    </Card>
+      </>
   );
 }
 

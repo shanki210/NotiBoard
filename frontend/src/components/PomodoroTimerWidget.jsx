@@ -146,7 +146,7 @@ function PomodoroTimerWidget() {
         </button>
       </div>
       {isSettingsOpen && (
-        <div className="settings-modal mt-4 p-4 bg-white rounded-lg shadow-lg">
+        <div className="settings-modal mt-30 p-4 bg-white rounded-lg shadow-lg">
           <div className="mb-4">
             <label className="block mb-2 text-gray-700 dark:text-gray-300">
               Work Timer (minutes):

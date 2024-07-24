@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Card } from './ui/card';
 
 const ChatBot = () => {
   const [message, setMessage] = useState('');
@@ -48,8 +49,8 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="chatbot-container p-4 bg-gray-100 rounded-lg shadow-md">
-      <div className="chat-history h-80 overflow-auto mb-4 p-2 border border-gray-300 rounded-lg bg-white">
+    <Card className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground">
+      <div>
         {chatHistory.map((entry, index) => (
           <div key={index} className={`message ${entry.sender}`}>
             <div className="message-text">{entry.text}</div>
@@ -72,7 +73,7 @@ const ChatBot = () => {
           Send
         </button>
       </div>
-    </div>
+    </Card>
   );
 };
 
