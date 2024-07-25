@@ -65,7 +65,7 @@ const GoogleMeetWidget = () => {
           className="btn btn-danger text-danger"
         >
           <span style={{ color: "white" }}>
-            <IoMdAdd />
+            <IoMdAdd style={{ width: "1.5rem", height: "1.5rem" }} />
           </span>
         </div>
       </div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card } from "./ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { FaPencilAlt } from "react-icons/fa";
 import GoogleCalenderSchedule from "./GoogleCalendarSchedule";
 
 const GoogleCalenderWidget = () => {
@@ -38,7 +39,12 @@ const GoogleCalenderWidget = () => {
       }}
     >
       <div className="w-full">
-        <div className="text-2xl font-bold mb-2">Your Schedule</div>
+        <div className="text-2xl font-bold mb-2 flex">
+          <FaPencilAlt
+            style={{ width: "2rem", height: "2rem", marginRight: "0.25rem" }}
+          />{" "}
+          Your Schedule
+        </div>
         {token === "" ? (
           <a
             className="btn btn-success"
