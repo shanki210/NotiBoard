@@ -3,36 +3,26 @@ import axios from "axios";
 import { Card } from "./ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import GoogleCalenderSchedule from "./GoogleCalendarSchedule";
 
 const GoogleCalenderWidget = () => {
-  const [meetUrl, setMeetUrl] = useState("");
-  const [schedule, setSchedule] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState(""); // State to store token
 
   useEffect(() => {
-    const fetchSchedule = async () => {
+    const fetchToken = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/schedule");
-        setSchedule(response.data);
+        const response = await axios.get(
+          "http://localhost:4000/auth/google/token"
+        );
+        console.log(response.data);
+        setToken(response.data.access_token);
       } catch (error) {
-        console.error("Failed to fetch schedule", error);
-      } finally {
-        setLoading(false);
+        console.error("Failed to fetch token", error);
       }
     };
 
-    fetchSchedule();
+    fetchToken();
   }, []);
-
-  const handleJoinMeeting = () => {
-    if (meetUrl) {
-      window.open(meetUrl, "_blank");
-    }
-  };
-
-  const handleCreateMeeting = () => {
-    window.open("https://calendar.google.com/", "_blank");
-  };
 
   return (
     <Card
@@ -49,20 +39,15 @@ const GoogleCalenderWidget = () => {
     >
       <div className="w-full">
         <div className="text-2xl font-bold mb-2">Your Schedule</div>
-        {loading ? (
-          <div>Loading...</div>
+        {token === "" ? (
+          <a
+            className="btn btn-success"
+            href="http://localhost:4000/auth/google"
+          >
+            Login to Google Calendar
+          </a>
         ) : (
-          <ul>
-            {schedule.length > 0 ? (
-              schedule.map((event) => (
-                <li key={event.id} className="mb-2">
-                  {event.title} at {event.time}
-                </li>
-              ))
-            ) : (
-              <li>No upcoming events</li>
-            )}
-          </ul>
+          <GoogleCalenderSchedule />
         )}
       </div>
     </Card>

@@ -14,6 +14,7 @@ const { generateRandomString } = require("../utils");
 
 global.access_token = "";
 global.refreshToken = "";
+global.accessToken = "";
 
 const oAuth2Client = new google.auth.OAuth2(
   GOOGLE_CLIENT_ID,
@@ -127,6 +128,10 @@ router.get("/auth/callback", (req, res) => {
 
 router.get("/auth/token", (req, res) => {
   res.json({ access_token: global.access_token });
+});
+
+router.get("/auth/google/token", (req, res) => {
+  res.json({ access_token: global.accessToken });
 });
 
 module.exports = router;

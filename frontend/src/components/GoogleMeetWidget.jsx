@@ -2,27 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card } from "./ui/card";
 import { Input } from "@/components/ui/input";
+import { IoMdAdd } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 
 const GoogleMeetWidget = () => {
   const [meetUrl, setMeetUrl] = useState("");
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchSchedule = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/api/schedule");
-        setSchedule(response.data);
-      } catch (error) {
-        console.error("Failed to fetch schedule", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSchedule();
-  }, []);
 
   const handleJoinMeeting = () => {
     if (meetUrl) {
@@ -35,34 +21,53 @@ const GoogleMeetWidget = () => {
   };
 
   return (
-    <Card className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground">
+    <Card
+      className="bg-card rounded-lg p-6 flex flex-col items-center justify-center dark:bg-[#2a2a2a] dark:text-card-foreground"
+      style={{
+        backgroundImage:
+          "url('https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Google_Meet_Backgrounds_hero.width-1300.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "300px",
+        maxHeight: "300px",
+      }}
+    >
       <div className="w-full flex justify-between items-center mb-4">
         <div className="relative w-full">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <VideoIcon className="w-5 h-5 text-muted-foreground" />
-          </div>
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"></div>
           <Input
             type="text"
-            placeholder="Enter Google Meet URL..."
+            placeholder="Enter Google Meet Code..."
             value={meetUrl}
-            onChange={(e) => setMeetUrl(e.target.value)}
+            onChange={(e) =>
+              setMeetUrl(`https://meet.google.com/${e.target.value}`)
+            }
             className="w-full pl-10 pr-4 py-2 rounded-md bg-muted text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           />
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="text-primary"
-          onClick={handleJoinMeeting}
-        >
-          <VideoIcon className="w-6 h-6" />
-        </Button>
       </div>
 
       <div className="w-full flex justify-center mb-4">
-        <Button onClick={handleCreateMeeting} className="text-primary">
-          <span style={{ color: "white" }}> Create Meet</span>
+        <Button onClick={handleJoinMeeting} className="text-primary">
+          <span style={{ color: "white" }} className="d-flex">
+            <VideoIcon
+              className="w-5 h-6 text-white"
+              style={{ marginRight: "0.5rem" }}
+            />
+            Join Meet
+          </span>
         </Button>
+      </div>
+      <div className="w-full flex justify-center mb-4">
+        <div
+          onClick={handleCreateMeeting}
+          className="btn btn-danger text-danger"
+        >
+          <span style={{ color: "white" }}>
+            <IoMdAdd />
+          </span>
+        </div>
       </div>
     </Card>
   );
